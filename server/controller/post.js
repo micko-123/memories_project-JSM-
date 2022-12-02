@@ -38,13 +38,13 @@ const updatePost = asyncHandler( async(req, res)=>{
     })
   } 
 )
-const deletePost =asyncHandler( async (req, res)=>{
-    // await Post.findByIdAndDelete(req.params.id)
+const deletePost = asyncHandler( async (req, res)=>{
+    await Post.findByIdAndDelete(req.params.id)
 
-    // res.status(200).json({
-    //     status:'succes',
-    //     message:'post succesfully deleted'
-    // })
+    res.status(200).json({
+        status:'succes',
+        message:'post succesfully deleted'
+    })
  }
 )
 
