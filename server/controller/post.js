@@ -19,6 +19,7 @@ const createPost= asyncHandler ( async(req, res)=>{
         tags:req.body.tags,
         selectedFile:req.body.selectedFile
     })
+    
     res.status(200).json({
         status:'succes',
         data: post
@@ -49,7 +50,18 @@ const deletePost = asyncHandler( async (req, res)=>{
 )
 
 const likePost = asyncHandler( async (req, res) => {
-    // const likedPost = await Post.findByIdAndUpdate(req.params.id, { likeCount: likeCount + 1})
+    const post = await Post.findById(req.params.id)
+
+    const likedPost = await Post.findByIdAndUpdate(req.params.id, { likeCount:post.likeCount + 1},{
+            new: true,
+            runValidators: true
+          } )
+    
+          
+    res.status(201).json({
+        status:'succes',
+        data: likedPost
+    })
 })
 module.exports = {
     getPost,
