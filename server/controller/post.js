@@ -27,19 +27,19 @@ const createPost= asyncHandler ( async(req, res)=>{
 )
 const updatePost = asyncHandler( async(req, res)=>{
     
-    // const updatedPost = await Post.findByIdAndUpdate(req.params.id, req.body,{
-    //     new: true,
-    //     runValidators: true
-    //   } )
+    const updatedPost = await Post.findByIdAndUpdate(req.params.id, req.body,{
+        new: true,
+        runValidators: true
+      } )
 
-    // res.status(201).json({
-    //     status: 'succes',
-    //     data: updatedPost
-    // })
+    res.status(201).json({
+        status: 'succes',
+        data: updatedPost
+    })
   } 
 )
 const deletePost =asyncHandler( async (req, res)=>{
-    // Post.findByIdAndDelete(req.params.id)
+    // await Post.findByIdAndDelete(req.params.id)
 
     // res.status(200).json({
     //     status:'succes',
@@ -47,9 +47,14 @@ const deletePost =asyncHandler( async (req, res)=>{
     // })
  }
 )
+
+const likePost = asyncHandler( async (req, res) => {
+    // const likedPost = await Post.findByIdAndUpdate(req.params.id, { likeCount: likeCount + 1})
+})
 module.exports = {
     getPost,
     createPost,
     updatePost,
-    deletePost
+    deletePost,
+    likePost
 }

@@ -5,7 +5,8 @@ const {
     getPost,
     createPost,
     updatePost,
-    deletePost
+    deletePost,
+    likePost
 } = require('../controller/post')
 
 const router = express.Router()
@@ -17,5 +18,7 @@ router.post('/', createPost)
 router.put('/:id',updatePost)
 
 router.delete('/:id', deletePost)
+
+router.put('/like/:id', likePost)
 
 module.exports = router
