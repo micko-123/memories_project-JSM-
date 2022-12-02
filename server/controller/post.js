@@ -12,28 +12,41 @@ const getPost = asyncHandler ( async (req, res)=>{
  }
 )
 const createPost= asyncHandler ( async(req, res)=>{
-    // const post = await Post.create({
-    //     title:req.body.title,
-    //     creator:req.body.creator,
-    //     message:req.body.message,
-    //     tags:req.body.tags,
-    //     selectedFile:req.body.selectedFile
-    // })
-    // res.status(200).json({
-    //     status:'succes',
-    //     data: post
-    // })
+    const post = await Post.create({
+        title:req.body.title,
+        creator:req.body.creator,
+        message:req.body.message,
+        tags:req.body.tags,
+        selectedFile:req.body.selectedFile
+    })
+    res.status(200).json({
+        status:'succes',
+        data: post
+    })
   }
 )
-const updatePost =  (req, res)=>{
+const updatePost = asyncHandler( async(req, res)=>{
     
-    res.send('<h1>update post</h1>')
-}
+    // const updatedPost = await Post.findByIdAndUpdate(req.params.id, req.body,{
+    //     new: true,
+    //     runValidators: true
+    //   } )
 
-const deletePost = (req, res)=>{
-    res.send('<h1>delete post</h1>')
-}
+    // res.status(201).json({
+    //     status: 'succes',
+    //     data: updatedPost
+    // })
+  } 
+)
+const deletePost =asyncHandler( async (req, res)=>{
+    // Post.findByIdAndDelete(req.params.id)
 
+    // res.status(200).json({
+    //     status:'succes',
+    //     message:'post succesfully deleted'
+    // })
+ }
+)
 module.exports = {
     getPost,
     createPost,
