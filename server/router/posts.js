@@ -1,22 +1,21 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler')
 
+const {
+    getPost,
+    createPost,
+    updatePost,
+    deletePost
+} = require('../controller/post')
+
 const router = express.Router()
 
-router.get('/', (req, res)=>{
-    res.send('<h1>get post</h1>')
-})
+router.get('/', getPost)
 
-router.post('/', (req, res)=>{
-    res.send('<h1>create post</h1>')
-})
+router.post('/', createPost)
 
-router.put('/:id', (req, res)=>{
-    res.send('<h1>update post</h1>')
-})
+router.put('/:id',updatePost)
 
-router.delete('/:id', (req, res)=>{
-    res.send('<h1>delete post</h1>')
-})
+router.delete('/:id', deletePost)
 
 module.exports = router
